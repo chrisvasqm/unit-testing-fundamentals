@@ -2,7 +2,7 @@ package fundamentals
 
 class Reservation {
 
-    lateinit var madeBy: User
+    var madeBy: User? = null
 
     fun canBeCancelledBy(user: User): Boolean {
         if (user.isAdmin)
