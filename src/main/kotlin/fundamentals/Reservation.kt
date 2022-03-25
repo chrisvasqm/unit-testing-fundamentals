@@ -5,10 +5,7 @@ class Reservation {
     var madeBy: User? = null
 
     fun canBeCancelledBy(user: User): Boolean {
-        if (user.isAdmin || user == madeBy)
-            return true
-
-        return false
+        return user.isAdmin || user == madeBy
     }
 
 }
