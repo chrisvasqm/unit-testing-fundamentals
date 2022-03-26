@@ -38,4 +38,26 @@ class MathTests {
 
         assertThat(actual).isEqualTo(1)
     }
+
+    @Test
+    fun getOddNumbers_LimitIsGreaterThanZero_ReturnsOddNumbersUpToLimit() {
+        val actual = math.getOddNumbers(10)
+
+        assertThat(actual).containsExactly(1, 3, 5, 7, 9)
+    }
+
+    @Test
+    fun getOddNumbers_IsZero_ReturnsEmptyList() {
+        val actual = math.getOddNumbers(0)
+
+        assertThat(actual).isEmpty()
+    }
+
+    @Test
+    fun getOddNumbers_LimitIsLessThanZero_ReturnsEmptyList() {
+        val actual = math.getOddNumbers(-10)
+
+        assertThat(actual).isEmpty()
+    }
+
 }
