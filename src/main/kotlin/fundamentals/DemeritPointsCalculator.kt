@@ -5,7 +5,7 @@ class DemeritPointsCalculator {
     private val speedLimit = 65
 
     fun calculateDemeritPoints(speed: Int): Int {
-        if (speed < 0)
+        if (speed < 0 || speed > 300)
             throw IllegalArgumentException("Speed must be a positive value")
 
         if (speed <= speedLimit)
