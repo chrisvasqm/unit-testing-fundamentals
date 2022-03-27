@@ -8,7 +8,7 @@ class Stack<T> {
     val count: Int
         get() = items.size
 
-    fun push(item: T) {
+    fun push(item: T?) {
         if (item == null)
             throw IllegalArgumentException("Item can not be null.")
 
