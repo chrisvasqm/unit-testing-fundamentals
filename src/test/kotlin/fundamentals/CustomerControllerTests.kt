@@ -1,7 +1,6 @@
+package fundamentals
+
 import com.google.common.truth.Truth.assertThat
-import fundamentals.CustomerController
-import fundamentals.NotFound
-import fundamentals.Ok
 import org.testng.annotations.BeforeMethod
 import org.testng.annotations.Test
 

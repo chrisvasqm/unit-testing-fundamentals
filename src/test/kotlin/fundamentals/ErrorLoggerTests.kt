@@ -1,6 +1,7 @@
+package fundamentals
+
 import com.google.common.truth.StringSubject
 import com.google.common.truth.Truth.assertThat
-import fundamentals.ErrorLogger
 import org.testng.annotations.BeforeMethod
 import org.testng.annotations.DataProvider
 import org.testng.annotations.Test

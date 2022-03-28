@@ -1,12 +1,11 @@
 package mocking
 
-import java.io.File
 
-class VideoService {
+class VideoService(private val fileReader: Reader) {
 
     fun readVideoFile(): String {
-        val file = File("video.txt")
-        val video = convertFileToVideo(file)
+        val content = fileReader.read("video.txt")
+        val video = convertFileToVideo(content)
 
         if (video == null)
             return "Error parsing video file"
@@ -16,8 +15,8 @@ class VideoService {
 
 }
 
-private fun convertFileToVideo(file: File?): Video? {
-    return Video(1, "title", true)
+private fun convertFileToVideo(content: String): Video? {
+    return null
 }
 
 data class Video(

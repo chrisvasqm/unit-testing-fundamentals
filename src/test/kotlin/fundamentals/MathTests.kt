@@ -1,3 +1,5 @@
+package fundamentals
+
 import com.google.common.truth.Truth.assertThat
 import fundamentals.Math
 import org.testng.annotations.BeforeMethod

@@ -1,6 +1,6 @@
+package fundamentals
+
 import com.google.common.truth.Truth.*
-import fundamentals.Reservation
-import fundamentals.User
 import org.testng.annotations.Test
 
 class ReservationTests {
