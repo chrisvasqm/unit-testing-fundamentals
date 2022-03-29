@@ -1,7 +1,10 @@
 package mocking
 
 
-class VideoService(private val fileReader: Reader) {
+class VideoService(
+    private val fileReader: Reader = FileReader(),
+    private val videoRepository: IVideoRepository = VideoRepository()
+) {
 
     fun readVideoFile(): String {
         val content = fileReader.read("video.txt")
@@ -14,15 +17,8 @@ class VideoService(private val fileReader: Reader) {
     }
 
     fun getUnprocessedVideosAsCsv(): String {
-        // Emulating a database
-        val videos = listOf(
-            Video(1),
-            Video(2),
-            Video(3),
-        )
+        val ids = videoRepository.getUnprocessedVideos().map { it.id }
 
-        val unprocessed = videos.filter { !it.isProcessed }
-        val ids = unprocessed.map { it.id }
         return ids.joinToString(separator = ", ")
     }
 

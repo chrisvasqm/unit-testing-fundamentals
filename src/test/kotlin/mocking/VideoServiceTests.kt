@@ -9,12 +9,14 @@ import org.testng.annotations.Test
 class VideoServiceTests {
 
     private lateinit var fileReader: Reader
+    private lateinit var repository: IVideoRepository
     private lateinit var service: VideoService
 
     @BeforeMethod
     fun setUp() {
         fileReader = mock()
-        service = VideoService(fileReader)
+        repository = mock()
+        service = VideoService(fileReader, repository)
     }
 
     @Test
@@ -26,4 +28,25 @@ class VideoServiceTests {
         assertThat(actual).contains("Error")
     }
 
+    @Test
+    fun getUnprocessedVideosAsCsv_AFewVideosAreUnprocessed_ReturnsAStringWithIdsSeparatedByComma() {
+        whenever(repository.getUnprocessedVideos()).thenReturn(listOf(
+            Video(id = 1),
+            Video(id = 2),
+            Video(id = 3),
+        ))
+
+        val actual = service.getUnprocessedVideosAsCsv()
+
+        assertThat(actual).isEqualTo("1, 2, 3")
+    }
+
+    @Test
+    fun getUnprocessedVideosAsCsv_AllVideosAreProcessed_ReturnAnEmptyString() {
+        whenever(repository.getUnprocessedVideos()).thenReturn(listOf())
+
+        val actual = service.getUnprocessedVideosAsCsv()
+
+        assertThat(actual).isEqualTo("")
+    }
 }
