@@ -1,19 +1,19 @@
 package mocking
 
-class InstallerHelper {
+class InstallerHelper(private val downloader: Downloader) {
 
     private val setupDestinationFile = ""
 
     fun downloadInstaller(customerName: String, installerName: String): Boolean {
-        val client = WebClient()
         try {
-            client.downloadFile(
+            downloader.downloadFile(
                 "https://example.com/$customerName/$installerName",
                 setupDestinationFile
             )
 
             return true
-        } catch (e: WebException) {
+        } catch (exception: WebException) {
+            // Here we would log the exception
             return false
         }
     }
