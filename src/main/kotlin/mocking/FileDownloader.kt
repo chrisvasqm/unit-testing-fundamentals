@@ -1,7 +1,7 @@
 package mocking
 
 interface Downloader {
-    fun downloadFile(url: String, path: String)
+    @Throws(WebException::class) fun downloadFile(url: String, path: String)
 }
 
 class FileDownloader : Downloader {
