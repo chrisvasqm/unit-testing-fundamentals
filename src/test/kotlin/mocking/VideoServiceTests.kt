@@ -43,7 +43,7 @@ class VideoServiceTests {
 
     @Test
     fun getUnprocessedVideosAsCsv_AllVideosAreProcessed_ReturnAnEmptyString() {
-        whenever(repository.getUnprocessedVideos()).thenReturn(listOf())
+        whenever(repository.getUnprocessedVideos()).thenReturn(emptyList())
 
         val actual = service.getUnprocessedVideosAsCsv()
 
