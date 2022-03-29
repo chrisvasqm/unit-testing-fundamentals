@@ -1,9 +1,5 @@
 package mocking
 
-interface IVideoRepository {
-    fun getUnprocessedVideos(): Iterable<Video>
-}
-
 class VideoRepository : IVideoRepository {
 
     private val videos = listOf(
