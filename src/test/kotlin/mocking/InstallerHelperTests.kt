@@ -20,7 +20,7 @@ class InstallerHelperTests {
 
     @Test
     fun downloadInstaller_IsFileDownloaded_ReturnsTrue() {
-        val actual = installerHelper.downloadInstaller("", "")
+        val actual = installerHelper.downloadInstaller("customer", "installer")
 
         assertThat(actual).isTrue()
     }
@@ -29,7 +29,7 @@ class InstallerHelperTests {
     fun downloadInstaller_WhenDownloadFails_ThrowsWebException() {
         whenever(fileDownloader.downloadFile(any(), any())).thenThrow(WebException::class.java)
 
-        val actual = installerHelper.downloadInstaller("customerName", "installerName")
+        val actual = installerHelper.downloadInstaller("customer", "installer")
 
         assertThat(actual).isFalse()
     }
