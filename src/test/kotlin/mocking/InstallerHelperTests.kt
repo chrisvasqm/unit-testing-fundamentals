@@ -19,14 +19,14 @@ class InstallerHelperTests {
     }
 
     @Test
-    fun downloadInstaller_IsFileDownloaded_ReturnsTrue() {
+    fun downloadInstaller_DownloadCompletes_ReturnsTrue() {
         val actual = installerHelper.downloadInstaller("customer", "installer")
 
         assertThat(actual).isTrue()
     }
 
     @Test
-    fun downloadInstaller_WhenDownloadFails_ThrowsWebException() {
+    fun downloadInstaller_DownloadFails_ThrowsWebException() {
         whenever(fileDownloader.downloadFile(any(), any())).thenThrow(WebException::class.java)
 
         val actual = installerHelper.downloadInstaller("customer", "installer")
