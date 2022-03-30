@@ -1,13 +1,9 @@
 package mocking
 
-class EmployeeController(private val context: EmployeeContext) {
+class EmployeeController(private val dataSource: DataSource) {
 
     fun delete(id: Int): ActionResult {
-        val employee: Employee? = context.employees.find { it.id == id }
-        employee.let {
-            context.employees.remove(it)
-            context.saveChanges()
-        }
+        dataSource.delete(id)
 
         return redirectToAction("employees")
     }
@@ -20,11 +16,3 @@ class EmployeeController(private val context: EmployeeContext) {
 
 open class ActionResult
 class RedirectResult(private val action: String) : ActionResult()
-
-class EmployeeContext {
-    val employees: MutableList<Employee> = mutableListOf(Employee(id = 1))
-
-    fun saveChanges() {}
-}
-
-class Employee(val id: Int)
